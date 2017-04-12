@@ -18,4 +18,15 @@ public class OptionalBasics {
         //return name.equals(exhibit.getName()) ? Optional.of(exhibit.getLocation()) : Optional.<Location>empty();
         return null;
     }
+
+    public Optional<String> getExhibitionLocationFunction(Exhibit exhibit){
+        //return Optional.ofNullable(exhibit.getLocation().getFunction());
+        return null;
+    }
+
+    //ispresent
+
+    //get
+
+    //orelse
 }

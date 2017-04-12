@@ -1,16 +1,20 @@
 package nl.developers.dojo.java.model;
 
+import java.util.Objects;
+
+import com.sun.istack.internal.NotNull;
+
 public class Exhibit {
 
     private String name;
     private Location location;
 
-    public Exhibit(Location location) {
+    public Exhibit(@NotNull Location location) {
         this.name = "";
         this.location = location;
     }
 
-    public Exhibit(String name, Location location) {
+    public Exhibit(String name,@NotNull  Location location) {
         this.name = name;
         this.location = location;
     }
@@ -28,6 +32,8 @@ public class Exhibit {
     }
 
     public void setLocation(Location location) {
-        this.location = location;
+        if(Objects.nonNull(location)){
+            this.location = location;
+        }
     }
 }
