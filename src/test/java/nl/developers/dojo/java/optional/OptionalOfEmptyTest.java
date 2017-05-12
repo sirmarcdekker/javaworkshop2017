@@ -1,6 +1,6 @@
 package nl.developers.dojo.java.optional;
 
-import static nl.developers.dojo.java.model.ExhibitFixture.ExhibitFactory.aExhibit;
+import static nl.developers.dojo.java.model.Fixtures.ExhibitFactory.aExhibit;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
