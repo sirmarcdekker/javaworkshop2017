@@ -30,3 +30,24 @@ the comments at the start of the file we will explain which topics will be cover
  file will check the results of the test. These test files contain one or more JUnit tests that will check if the
  function has been implemented correctly. We are aware that a lot of excerzises can be done without using Java 8
  features but doing that would offcourse defeat the point of the excerzise.
+ 
+ The various features of Java 8 have been designed to solve diffrent problems. Below we will explain in general terms 
+ what problem each feature tries to solve.
+ 
+ Optionals
+ ... the creator of the null reference has said it is his billion dollar mistakes. A lot of times a runtime problem is caused by an unexpected null reference. Optionals aim to solve stray null reference. They allow you to wrap an reference in an entity which has either a valid reference or an empty instance which we need to explicitly check.
+ 
+Streams
+A lot of work in applications is doing operations on collections of date. This involves manimulation of both the data in the collection and the collection itself. The Streams API introduced in Java 8 by allowing easy changes of the data using methods like map and flatmap and manipulating the collection with methods like filter and collect.
+
+Concurrency
+CPU developement has moved away from making single more powerfull processors and has been moving towards multi core systems. The new concurrency features of Java 8 are there to make better use of the system resources and improve the performance of your application.
+
+Lambda
+Very often a piece of code will be needed multiple times with only one operation being different from the other uses. This was normally solved by making an inner class with one method that was overwritten for the different uses.
+
+Java Time
+Many applications touch the subject of time. Before Java 8 time management in java out of the box was cumbersome and non intuitive. This means that a lot of projects use an third party package for time operation with the most populair being JodaTime. To improve on this the creator of JodaTime has written the java.time API to handle time in java
+
+NIO
+Just like time dealing with IO used to be cumbersome and awkward before java 8. Navigating file structures and such was difficult and a lot of basic checks had to be done by hand. With the new NIO API the handeling of the file system is done much easier by identifying a data source and using the paths in the source as objects easaly interchangeable to the real files 
