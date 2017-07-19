@@ -1,5 +1,6 @@
 package nl.developers.dojo.java.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,40 +33,99 @@ public class Fixtures {
         }
     }
 
-    public static class LocationFactory {
+    public static class RoomFactory {
 
+        private String roomNumber;
         private String function;
         final private List<Location> neighbours = new ArrayList<>();
 
-        private LocationFactory(){
+        private RoomFactory(){
         }
 
-        public static LocationFactory aLocation() {
-            return new LocationFactory();
+        public static RoomFactory aRoom() {
+            return new RoomFactory();
         }
 
-        public LocationFactory withFunction(String function) {
+        public RoomFactory withFunction(String function) {
             this.function = function;
             return this;
         }
 
-        public LocationFactory withNeighbour(Location location) {
+        public RoomFactory withNeighbour(Location location) {
             if(Objects.nonNull(location)){
                 neighbours.add(location);
             }
             return this;
         }
 
-        public Location build() {
-            Location location = new Location(function);
+        public RoomFactory withRoom(String roomNumber) {
+            this.roomNumber = roomNumber;
+            return this;
+        }
+
+        public Room build() {
+            Room location = new Room(function);
             location.getNeighbours().addAll(neighbours);
+            location.setRoomNumber(roomNumber);
+            return location;
+        }
+    }
+
+    public static class OutdoorPlotFactory {
+
+        private String plotIdentifier = "A0";
+        private Long size = 20L;
+        private Long cost;
+        protected String function;
+        final protected List<Location> neighbours = new ArrayList<>();
+        private OutdoorPlotFactory(){
+        }
+
+        public static OutdoorPlotFactory aOutdoorPlot() {
+            return new OutdoorPlotFactory();
+        }
+
+        public OutdoorPlotFactory withFunction(String function) {
+            this.function = function;
+            return this;
+        }
+
+        public OutdoorPlotFactory withNeighbour(Location location) {
+            if(Objects.nonNull(location)){
+                neighbours.add(location);
+            }
+            return this;
+        }
+
+        public OutdoorPlotFactory withPlotIdentifier(String id) {
+            this.plotIdentifier = id;
+            return this;
+        }
+
+        public OutdoorPlotFactory withCost(Long cost) {
+            this.cost = cost;
+            return this;
+        }
+
+        public OutdoorPlotFactory withSize(Long size) {
+            this.size = size;
+            return this;
+        }
+
+        public OutdoorPlot build() {
+            OutdoorPlot location = new OutdoorPlot(function);
+            location.getNeighbours().addAll(neighbours);
+            location.setPlotIdentifier(plotIdentifier);
+            location.setCost(cost);
+            location.setSize(size);
             return location;
         }
     }
 
     public static class GuestFactory {
-        private Optional<String> name = Optional.empty();
-        private Optional<Exhibit> currentlyAt = Optional.empty();
+        private String name;
+        private Exhibit currentlyAt;
+        private Integer tourLevel;
 
         private GuestFactory(){
         }
@@ -75,12 +135,17 @@ public class Fixtures {
         }
 
         public GuestFactory withName(String name) {
-            this.name = Optional.of(name);
+            this.name = name;
+            return this;
+        }
+
+        public GuestFactory withTourLevel(Integer tourLevel) {
+            this.tourLevel = tourLevel;
             return this;
         }
 
         public GuestFactory withCurrentlyAt(Exhibit currentlyAt) {
-            this.currentlyAt = Optional.of(currentlyAt);
+            this.currentlyAt = currentlyAt;
             return this;
         }
 
@@ -88,7 +153,37 @@ public class Fixtures {
             Guest guest = new Guest();
             guest.setCurrentlyAt(this.currentlyAt);
             guest.setName(name);
+            guest.setTourLevel(tourLevel);
             return guest;
+        }
+    }
+
+    public static class VisitorLogFactory {
+
+        private Optional<LocalDate> logDate = Optional.empty();
+        final private List<String> visitors = new ArrayList<>();
+
+        private VisitorLogFactory(){
+        }
+
+        public static VisitorLogFactory aVisitorLog() {
+            return new VisitorLogFactory();
+        }
+
+        public VisitorLogFactory withDate(LocalDate date) {
+            logDate = Optional.ofNullable(date);
+            return this;
+        }
+
+        public VisitorLogFactory withVisistor(String name) {
+            visitors.add(name);
+            return this;
+        }
+
+        public VisitorLog build() {
+            VisitorLog result = new VisitorLog(logDate.orElseGet(LocalDate::now));
+            visitors.forEach(result::addVisitor);
+            return result;
         }
     }
 }

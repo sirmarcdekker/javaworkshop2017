@@ -17,7 +17,6 @@ public class OptionalBasics {
      * @return the location of the exhibit if exhibit.name = name otherwise empty
      */
     public Optional<Location> getCorrectExhibitLocation(String name, Exhibit exhibit) {
-        //return name.equals(exhibit.getName()) ? Optional.of(exhibit.getLocation()) : Optional.<Location>empty();
         return null;
     }
 
@@ -29,7 +28,6 @@ public class OptionalBasics {
      * @return An Optional of the function of the location of the exhibit if it exist Otherwise empty.
      */
     public Optional<String> getExhibitionLocationFunction(Exhibit exhibit){
-        //return Optional.ofNullable(exhibit.getLocation().getFunction());
         return null;
     }
 
@@ -41,14 +39,24 @@ public class OptionalBasics {
      * @return the location of the exhibit if exhibit.name = name otherwise empty
      */
     public Location getVisitorLocation(Guest guest){
-        /*if (guest.getCurrentlyAt().isPresent()) {
-            return guest.getCurrentlyAt().get().getLocation();
-        }
-        return null;*/
         return new Location();
     }
 
-    //get
+    /**
+     * Return the name of a visitor. Assume it exists.
+     * @param guest a guest with a provided name
+     * @return the name of the guest
+     */
+    public String getVisitorName(Guest guest) {
+        return null;
+    }
 
-    //orelse
+    /**
+     * Return the name of visitor if it has one otherwise use John Doe as a default.
+     * @param guest a guest which might have a name
+     * @return the name of guest is it has one otherwise return John Doe
+     */
+    public String getVisitorNameWithDefault(Guest guest) {
+        return null;
+    }
 }

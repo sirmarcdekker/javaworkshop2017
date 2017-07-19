@@ -1,7 +1,7 @@
 package nl.developers.dojo.java.optional;
 
 import static nl.developers.dojo.java.model.Fixtures.ExhibitFactory.aExhibit;
-import static nl.developers.dojo.java.model.Fixtures.LocationFactory.aLocation;
+import static nl.developers.dojo.java.model.Fixtures.RoomFactory.aRoom;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -18,8 +18,7 @@ public class OptionalOfNullableTest {
     @Test
     public void locationWithFunction() {
         String function = "Exhibitions";
-        Exhibit exhibit = aExhibit().withLocation(aLocation().withFunction(function)
-                                                             .build())
+        Exhibit exhibit = aExhibit().withLocation(aRoom().withFunction(function).build())
                                     .build();
 
         Optional<String> result = target.getExhibitionLocationFunction(exhibit);
@@ -31,8 +30,7 @@ public class OptionalOfNullableTest {
 
     @Test
     public void locationWithoutFunction() {
-        Exhibit exhibit = aExhibit().withLocation(aLocation().withFunction(null)
-                                                             .build())
+        Exhibit exhibit = aExhibit().withLocation(aRoom().withFunction(null).build())
                                     .build();
         Optional<String> result = target.getExhibitionLocationFunction(exhibit);
 
@@ -45,7 +43,7 @@ public class OptionalOfNullableTest {
     @Test
     public void locationWithEmptyFunction() {
         String function = "";
-        Exhibit exhibit = aExhibit().withLocation(aLocation().withFunction(function)
+        Exhibit exhibit = aExhibit().withLocation(aRoom().withFunction(function)
                                                              .build())
                                     .build();
 

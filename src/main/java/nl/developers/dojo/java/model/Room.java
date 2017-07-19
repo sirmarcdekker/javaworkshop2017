@@ -4,7 +4,9 @@ public class Room extends Location {
 
     private String roomNumber;
 
-
+    public Room(String function) {
+        super(function);
+    }
 
     public String getRoomNumber() {
         return roomNumber;

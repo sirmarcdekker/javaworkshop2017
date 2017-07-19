@@ -9,6 +9,7 @@ public class Guest {
     private long visitorNumber;
     private Optional<String> name;
     private Optional<Exhibit> currentlyAt;
+    private Optional<Integer> tourLevel;
 
     public Guest(){
         this.visitorNumber = VISITOR_COUNT++;
@@ -22,15 +23,23 @@ public class Guest {
         return name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public Optional<Integer> getTourLevel() {
+        return tourLevel;
+    }
+
+    public void setTourLevel(Integer tourLevel) {
+        this.tourLevel = Optional.ofNullable(tourLevel);
+    }
+
+    public void setName(String name) {
+        this.name = Optional.ofNullable(name);
     }
 
     public Optional<Exhibit> getCurrentlyAt() {
         return currentlyAt;
     }
 
-    public void setCurrentlyAt(Optional<Exhibit> currentlyAt) {
-        this.currentlyAt = currentlyAt;
+    public void setCurrentlyAt(Exhibit currentlyAt) {
+        this.currentlyAt = Optional.ofNullable(currentlyAt);
     }
 }
