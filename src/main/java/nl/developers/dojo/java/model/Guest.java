@@ -1,5 +1,7 @@
 package nl.developers.dojo.java.model;
 
+import static java.util.Optional.empty;
+
 import java.util.Optional;
 
 public class Guest {
@@ -7,9 +9,9 @@ public class Guest {
     private static long VISITOR_COUNT = 0;
 
     private long visitorNumber;
-    private Optional<String> name;
-    private Optional<Exhibit> currentlyAt;
-    private Optional<Integer> tourLevel;
+    private Optional<String> name = empty();
+    private Optional<Exhibit> currentlyAt = empty();
+    private Optional<Integer> tourLevel = empty();
 
     public Guest(){
         this.visitorNumber = VISITOR_COUNT++;

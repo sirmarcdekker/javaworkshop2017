@@ -186,4 +186,50 @@ public class Fixtures {
             return result;
         }
     }
+
+    public static class GroupFactory {
+        private String name = "NASA School Trip";
+        private String contact = "Albert Einstein";
+        private Exhibit currentlyAt = ExhibitFactory.aExhibit().withName("Entrance").build();
+        private int tourLevel = 5;
+        private List<Guest> groupMembers = new ArrayList<>();
+
+        private GroupFactory() {
+        }
+
+        public static GroupFactory aGroup() {
+            return new GroupFactory();
+        }
+
+        public GroupFactory withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public GroupFactory withContact(String contact) {
+            this.contact = contact;
+            return this;
+        }
+
+        public GroupFactory withCurrentlyAt(Exhibit currentlyAt) {
+            this.currentlyAt = currentlyAt;
+            return this;
+        }
+
+        public GroupFactory withTourLevel(int tourLevel) {
+            this.tourLevel = tourLevel;
+            return this;
+        }
+
+        public GroupFactory withGroupMember(Guest groupMember) {
+            this.groupMembers.add(groupMember);
+            return this;
+        }
+
+        public Group build() {
+            Group result = new Group(name, contact, currentlyAt, tourLevel);
+            groupMembers.forEach(result::addGroupMember);
+            return result;
+        }
+    }
 }
