@@ -1,4 +1,4 @@
-package nl.developers.dojo.java.lambda.supplier;
+package nl.developers.dojo.java.lambda;
 
 
 import static nl.developers.dojo.java.model.Fixtures.ExhibitFactory.aExhibit;
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 import nl.developers.dojo.java.model.Exhibit;
 import org.junit.Test;
 
-public class SupplierCreation {
+public class SupplierCreationTest {
 
     @Test
     public void namePresentTest() {

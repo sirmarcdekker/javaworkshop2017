@@ -1,4 +1,4 @@
-package nl.developers.dojo.java.lambda.supplier;
+package nl.developers.dojo.java.lambda;
 
 import static nl.developers.dojo.java.model.Fixtures.ExhibitFactory.aExhibit;
 import static nl.developers.dojo.java.model.Fixtures.GroupFactory.aGroup;
@@ -17,7 +17,7 @@ import nl.developers.dojo.java.model.Group;
 import nl.developers.dojo.java.model.Guest;
 import org.junit.Test;
 
-public class SupplierMultiLine {
+public class SupplierMultiLineTest {
 
     @Test
     public void singleGuestTest() {

@@ -1,13 +1,16 @@
-package nl.developers.dojo.java.lambda.supplier;
+package nl.developers.dojo.java.lambda;
 
 import java.util.function.Supplier;
 
 import nl.developers.dojo.java.model.Exhibit;
 import nl.developers.dojo.java.model.Group;
 import nl.developers.dojo.java.model.Guest;
+import nl.developers.dojo.java.model.OutdoorPlot;
 
 /**
- * Supplier expresions allow us to simply pass object creation code between objects without actually making the objects until they are needed.
+ * Supplier allow us to simply pass object creation code between objects without actually making the objects until they are needed.
+ * This is used to prevent the same creation code to be duplicated into multiple locations or if the creation needs functions
+ * of values only available in the class creating the supplier.
  */
 public class SupplierBasics {
 
@@ -31,13 +34,15 @@ public class SupplierBasics {
      * @return a supplier that creates guests that are part of the group
      */
     public static Supplier<Guest> createGroupGuestSupplier(Group group) {
-        return () -> {
-            Guest result = new Guest();
-            result.setTourLevel(group.getTourLevel());
-            result.setCurrentlyAt(group.getCurrentlyAt());
-            group.addGroupMember(result);
-            return result;
-        };
-        //return () -> null;
+        return () -> null;
+    }
+
+    /**
+     * Find a plot that cost less then it's size. If the plot has no price it is not vallid.
+     * @param plotSupplier A Supplier that provides plots for consideration
+     * @return A plot for which size > then cost and cost is filled in
+     */
+    public static OutdoorPlot findCheapPlot(Supplier<OutdoorPlot> plotSupplier) {
+        return null;
     }
 }
